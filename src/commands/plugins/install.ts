@@ -2,7 +2,7 @@ import {Command, flags} from '@oclif/command'
 import * as chalk from 'chalk'
 import cli from 'cli-ux'
 
-import Plugins from '../../plugins'
+import Plugins from '../../modules/plugins'
 
 export default class PluginsInstall extends Command {
   static description = `installs a plugin into the CLI

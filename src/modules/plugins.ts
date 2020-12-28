@@ -30,6 +30,7 @@ export default class Plugins {
       const pjson = await loadJSON<Config.PJSON>(this.pjsonPath)
       return {
         ...initPJSON,
+        //@ts-ignore
         oclif: {
           ...initPJSON.oclif,
           ...pjson.oclif,
