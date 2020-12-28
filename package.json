@@ -39,7 +39,8 @@
     "mocha": "^8.2.1",
     "nock": "^13.0.3",
     "ts-node": "^9.0.0",
-    "typescript": "3.8.3"
+    "typescript": "3.8.3",
+    "vtex": "^2.121.0-beta.1"
   },
   "engines": {
     "node": ">=8.0.0"
