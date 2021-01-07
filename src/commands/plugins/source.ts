@@ -1,11 +1,11 @@
 import {Command, flags} from '@oclif/command'
 import Plugins from '../../modules/plugins'
-import { FeatureFlag } from 'vtex';
-import { IPlugin } from '@oclif/config';
+import {FeatureFlag} from 'vtex'
+import {IPlugin} from '@oclif/config'
 import chalk = require('chalk');
 
 export default class PluginsSource extends Command {
-  static description = `List all plugins from VTEX`
+  static description = 'List all plugins from VTEX'
 
   static usage = 'plugins:source PLUGIN'
 
@@ -21,11 +21,16 @@ export default class PluginsSource extends Command {
   plugins = new Plugins(this.config)
 
   async run() {
-    const remoteCommands: string[] = FeatureFlag.getSingleton().getFeatureFlagInfo<string[]>("REMOTE_COMMANDS").sort()
-    let allPlugins : IPlugin[] = this.config.plugins
+    const remoteCommands: string[] = FeatureFlag.getSingleton().getFeatureFlagInfo<string[]>('REMOTE_COMMANDS').sort()
+    let allPlugins: IPlugin[] = this.config.plugins
     allPlugins = allPlugins.filter(p => p.type !== 'core' && p.type !== 'dev' && p.name.startsWith('@vtex/cli-plugin-'))
-    allPlugins = allPlugins.map(p => { p.name = p.name.replace('@vtex/cli-plugin-', ''); return p })
-    let plugins: string[] = allPlugins.map(p => { return p.name })
+    allPlugins = allPlugins.map(p => {
+      p.name = p.name.replace('@vtex/cli-plugin-', '')
+      return p
+    })
+    const plugins: string[] = allPlugins.map(p => {
+      return p.name
+    })
     for (let command of remoteCommands) {
       if (plugins.includes(command)) {
         command = `${chalk.green(command)}`
@@ -33,5 +38,4 @@ export default class PluginsSource extends Command {
       console.log(`• ${command}`)
     }
   }
-  
 }
