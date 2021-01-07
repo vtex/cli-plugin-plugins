@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [1.10.0] - 2021-01-07
+
 ### Changed
 - [List] Move command from `index` to `plugins list`
 - [Source] New command that list all `VTEX` plugins
