@@ -1,7 +1,7 @@
 ## [Unreleased]
 
 ## [1.10.0] - 2021-01-07
-
+- [Install] Create symlink to `plugin` access `vtex` lib
 ### Changed
 - [List] Move command from `index` to `plugins list`
 - [Source] New command that list all `VTEX` plugins
