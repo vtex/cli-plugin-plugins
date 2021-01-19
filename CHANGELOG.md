@@ -1,4 +1,6 @@
 ## [Unreleased]
+
+## [1.10.1] - 2021-01-19
 ### Fixed
 - [Install] Create symlink to `plugin` access `vtex` lib
 
