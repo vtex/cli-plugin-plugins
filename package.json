@@ -64,6 +64,11 @@
     "devPlugins": [
       "@oclif/plugin-help"
     ],
+    "topics": {
+      "plugins": {
+        "description": "Manages the CLI plugins. Run 'vtex plugins' to see all 6 subcommands"
+      }
+    },
     "aliases": {
       "aliasme": "oclif-debug"
     },
