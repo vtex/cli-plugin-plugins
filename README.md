@@ -81,20 +81,20 @@ For removing plugins that are no longer needed (either because they're sunset or
 
 # Commands
 <!-- commands -->
-* [`mycli plugins install PLUGIN`](#mycli-plugins-install-plugin)
-* [`mycli plugins link PLUGIN`](#mycli-plugins-link-plugin)
-* [`mycli plugins:list`](#mycli-pluginslist)
-* [`mycli plugins source PLUGIN`](#mycli-plugins-source-plugin)
-* [`mycli plugins uninstall PLUGIN`](#mycli-plugins-uninstall-plugin)
-* [`mycli plugins:update`](#mycli-pluginsupdate)
+* [`vtex plugins install PLUGIN`](#vtex-plugins-install-plugin)
+* [`vtex plugins link PLUGIN`](#vtex-plugins-link-plugin)
+* [`vtex plugins:list`](#vtex-pluginslist)
+* [`vtex plugins source PLUGIN`](#vtex-plugins-source-plugin)
+* [`vtex plugins uninstall PLUGIN`](#vtex-plugins-uninstall-plugin)
+* [`vtex plugins:update`](#vtex-pluginsupdate)
 
-## `mycli plugins install PLUGIN`
+## `vtex plugins install PLUGIN`
 
 Installs a plugin into the CLI.
 
 ```
 USAGE
-  $ mycli plugins install PLUGIN
+  $ vtex plugins install PLUGIN
 
 ARGUMENTS
   PLUGIN  plugin to install
@@ -105,23 +105,23 @@ OPTIONS
   -v, --verbose
 
 ALIASES
-  $ mycli plugins:add
+  $ vtex plugins:add
 
 EXAMPLES
   vtex plugins install lighthouse
-  vtex plugins install https://github.com/someuser/someplugin
+  vtex plugins install https://github.com/vtex/cli-plugin-someplugin
   vtex plugins install @vtex/cli-plugin-someplugin
 ```
 
 _See code: [src/commands/plugins/install.ts](https://github.com/vtex/cli-plugin-plugins/blob/v1.10.2/src/commands/plugins/install.ts)_
 
-## `mycli plugins link PLUGIN`
+## `vtex plugins link PLUGIN`
 
 Links a plugin into the CLI for development.
 
 ```
 USAGE
-  $ mycli plugins link PLUGIN
+  $ vtex plugins link PLUGIN
 
 ARGUMENTS
   PATH  [default: .] Plugin path.
@@ -136,13 +136,13 @@ EXAMPLE
 
 _See code: [src/commands/plugins/link.ts](https://github.com/vtex/cli-plugin-plugins/blob/v1.10.2/src/commands/plugins/link.ts)_
 
-## `mycli plugins:list`
+## `vtex plugins:list`
 
 Lists all plugins installed on your machine.
 
 ```
 USAGE
-  $ mycli plugins:list
+  $ vtex plugins:list
 
 OPTIONS
   --core  Shows core plugins.
@@ -153,13 +153,13 @@ EXAMPLE
 
 _See code: [src/commands/plugins/list.ts](https://github.com/vtex/cli-plugin-plugins/blob/v1.10.2/src/commands/plugins/list.ts)_
 
-## `mycli plugins source PLUGIN`
+## `vtex plugins source PLUGIN`
 
 Lists all plugins supported by VTEX.
 
 ```
 USAGE
-  $ mycli plugins source PLUGIN
+  $ vtex plugins source PLUGIN
 
 ARGUMENTS
   PATH  [default: .] Plugin path.
@@ -174,13 +174,13 @@ EXAMPLE
 
 _See code: [src/commands/plugins/source.ts](https://github.com/vtex/cli-plugin-plugins/blob/v1.10.2/src/commands/plugins/source.ts)_
 
-## `mycli plugins uninstall PLUGIN`
+## `vtex plugins uninstall PLUGIN`
 
 Removes a plugin from the CLI
 
 ```
 USAGE
-  $ mycli plugins uninstall PLUGIN
+  $ vtex plugins uninstall PLUGIN
 
 ARGUMENTS
   PLUGIN  Plugin to uninstall.
@@ -190,19 +190,19 @@ OPTIONS
   -v, --verbose
 
 ALIASES
-  $ mycli plugins:unlink
-  $ mycli plugins:remove
+  $ vtex plugins:unlink
+  $ vtex plugins:remove
 ```
 
 _See code: [src/commands/plugins/uninstall.ts](https://github.com/vtex/cli-plugin-plugins/blob/v1.10.2/src/commands/plugins/uninstall.ts)_
 
-## `mycli plugins:update`
+## `vtex plugins:update`
 
 Updates all plugins installed on your machine.
 
 ```
 USAGE
-  $ mycli plugins:update
+  $ vtex plugins:update
 
 OPTIONS
   -h, --help     show CLI help
