@@ -155,7 +155,7 @@ _See code: [src/commands/plugins/list.ts](https://github.com/vtex/cli-plugin-plu
 
 ## `mycli plugins source PLUGIN`
 
-Lists all plugins supported by [93mVTEX[39m.
+Lists all plugins supported by VTEX.
 
 ```
 USAGE
