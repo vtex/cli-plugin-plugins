@@ -21,11 +21,11 @@ plugins plugin for oclif
 
 # What is this?
 
-This plugin is used to allow users to install plugins into your oclif CLI at runtime. For example, in the Heroku CLI this is used to allow people to install plugins such as the Heroku Kafka plugin:
+This plugin is used to allow users to install plugins into your oclif CLI at runtime. For example, in the VTEX CLI this is used to allow people to install plugins such as the VTEX Autoupdate plugin:
 
 ```sh-session
-$ heroku plugins:install heroku-kafka
-$ heroku kafka
+$ vtex plugins install autoupdate
+$ vtex autoupdate
 ```
 
 This is useful to allow users to create their own plugins to work in your CLI or to allow you to build functionality that users can optionally install.
@@ -57,7 +57,7 @@ To set this up, simply set the `oclif.scope` to the name of your npm org. In the
 
 # Aliases
 
-Over time in the Heroku CLI we've changed plugin names, brought plugins into the core of the CLI, or sunset old plugins that no longer function. There is support in this plugin for dealing with these situations.
+Over time in the VTEX CLI we've changed plugin names, brought plugins into the core of the CLI, or sunset old plugins that no longer function. There is support in this plugin for dealing with these situations.
 
 For renaming plugins, add an alias section to `oclif.aliases` in `package.json`:
 

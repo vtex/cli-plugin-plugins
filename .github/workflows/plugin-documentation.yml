@@ -21,8 +21,8 @@ jobs:
         run: yarn install
       - name: Update README
         run: yarn prepack
-      - name: Remove collor char from README
-        run: curl 'https://vtex-toolbelt-test.s3.us-east-2.amazonaws.com/removeTerminalCollorFromFile.sh' > tmpCollorScrip.sh && bash tmpCollorScrip.sh && rm tmpCollorScrip.sh
+      - name: Remove color char from README
+        run: curl 'https://vtex-toolbelt-test.s3.us-east-2.amazonaws.com/removeTerminalColorFromFile.sh' > tmpColorScrip.sh && bash tmpColorScrip.sh && rm tmpColorScrip.sh
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
         with:
