@@ -17,7 +17,7 @@ export default class PluginsInstall extends Command {
     )} lighthouse`,
     `${ColorifyConstants.COMMAND_OR_VTEX_REF(
       "vtex plugins install"
-    )} ${chalk.hex(COLORS.BLUE)("https://github.com/someuser/someplugin")}`,
+    )} ${chalk.hex(COLORS.BLUE)("https://github.com/vtex/cli-plugin-someplugin")}`,
     `${ColorifyConstants.COMMAND_OR_VTEX_REF(
       "vtex plugins install"
     )} @vtex/cli-plugin-someplugin`,
