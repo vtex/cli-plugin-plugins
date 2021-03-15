@@ -1,4 +1,7 @@
 ## [Unreleased]
+### Changed
+
+- [Messages] Improve UX
 
 ## [1.10.2] - 2021-03-10
 
