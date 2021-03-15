@@ -97,7 +97,7 @@ USAGE
   $ mycli plugins install PLUGIN
 
 ARGUMENTS
-  PLUGIN  Plugin to install.
+  PLUGIN  plugin to install
 
 OPTIONS
   -f, --force    Refetches all packages, even the ones that were previously installed.
