@@ -72,7 +72,7 @@
     "aliases": {
       "aliasme": "oclif-debug"
     },
-    "bin": "mycli"
+    "bin": "vtex"
   },
   "repository": "vtex/cli-plugin-plugins",
   "scripts": {
