@@ -26,5 +26,5 @@ jobs:
         id: package
         uses: juliangruber/read-file-action@v1.0.0
         with:
-          path: package.json
+          path: ./package.json
       - run: echo ${{ steps.package.outputs.content }}
