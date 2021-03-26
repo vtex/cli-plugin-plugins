@@ -155,7 +155,7 @@ _See code: [src/commands/plugins/list.ts](https://github.com/vtex/cli-plugin-plu
 
 ## `vtex plugins source PLUGIN`
 
-Lists all plugins supported by [38;2;139;195;74mVTEX[39m.
+Lists all plugins supported by VTEX.
 
 ```
 USAGE
