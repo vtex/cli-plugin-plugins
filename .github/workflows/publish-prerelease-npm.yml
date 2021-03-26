@@ -21,9 +21,3 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           IS_CI: 'true'
-      - name: Read package.json
-        id: package
-        uses: juliangruber/read-file-action@v1.0.0
-        with:
-          path: ./oclif.manifest.json
-      - run: echo ${{ steps.package.outputs.content }}
