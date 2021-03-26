@@ -79,7 +79,6 @@
     "watch": "yarn build-clean && yarn tsc --watch",
     "build": "yarn build-clean && tsc",
     "build-clean": "rm -rf lib",
-    "clean": "rm -f oclif.manifest.json",
     "lint": "eslint ./src --cache --ext .ts --config .eslintrc",
     "pretest": "yarn build --noEmit && tsc -p test --noEmit",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
