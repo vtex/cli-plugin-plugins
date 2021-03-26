@@ -17,13 +17,13 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: yarn
+      - run: npm publish --access=public --tag beta
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          IS_CI: 'true'
       - name: Read package.json
         id: package
         uses: juliangruber/read-file-action@v1.0.0
         with:
           path: ./oclif.manifest.json
       - run: echo ${{ steps.package.outputs.content }}
-      - run: npm publish --access=public --tag beta
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          IS_CI: 'true'
