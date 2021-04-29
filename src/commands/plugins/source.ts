@@ -29,9 +29,8 @@ export default class PluginsSource extends Command {
   plugins = new Plugins(this.config);
 
   async run() {
-    const remoteCommandsDescriptions: Record<string, string> = FeatureFlag.getSingleton()
-    .getFeatureFlagInfo<Record<string, string>>("REMOTE_COMMANDS_DESCRIPTIONS");
-
+    const remoteCommands: Array<{ name: string, description: string }> = FeatureFlag.getSingleton()
+    .getFeatureFlagInfo<Array<{ name: string, description: string }>>("REMOTE_COMMANDS_DESCRIPTIONS");
     let allPlugins: IPlugin[] = this.config.plugins;
     allPlugins = allPlugins.filter(
       (p) =>
@@ -46,11 +45,11 @@ export default class PluginsSource extends Command {
     const plugins: string[] = allPlugins.map((p) => {
       return p.name;
     });
-    Object.entries(remoteCommandsDescriptions).forEach(([command, description]) => {
-      if (plugins.includes(command)) {
-        command = `${chalk.green(command)}`;
+    for (const command of remoteCommands) {
+      if (plugins.includes(command.name)) {
+        command.name = `${chalk.green(command.name)}`;
       }
-      console.log(`• ${command} -`, description);
-    });
+      console.log(`• ${command.name} -`, command.description);
+    }
   }
 }
