@@ -1,6 +1,9 @@
 ## [Unreleased]
 
 ## [1.12.0] - 2021-04-29
+### Features
+
+* add descriptions to plugins under the "vtex plugins source" command
 
 ## [1.11.1] - 2021-03-30
 ### Fixed
