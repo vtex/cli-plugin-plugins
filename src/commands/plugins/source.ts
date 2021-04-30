@@ -30,7 +30,7 @@ export default class PluginsSource extends Command {
 
   async run() {
     const remoteCommands = FeatureFlag.getSingleton()
-    .getFeatureFlagInfo<Array<{ name: string, description: string }>>("REMOTE_COMMANDS_DESCRIPTIONS");
+    .getFeatureFlagInfo<Array<{ name: string, description: string }>>("REMOTE_COMMANDS");
     let allPlugins: IPlugin[] = this.config.plugins;
     allPlugins = allPlugins.filter(
       (p) =>
