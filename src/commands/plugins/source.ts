@@ -49,7 +49,7 @@ export default class PluginsSource extends Command {
       if (plugins.includes(command.name)) {
         command.name = `${chalk.green(command.name)}`;
       }
-      console.log(`• ${command.name} -`, command.description);
+      console.log(`• ${command.name} - ${command.description}`);
     }
   }
 }
