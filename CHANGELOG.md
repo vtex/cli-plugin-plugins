@@ -1,6 +1,6 @@
 ## [Unreleased]
 
-### Features
+### Added
 
 - add descriptions to plugins under the "vtex plugins source" command
 
