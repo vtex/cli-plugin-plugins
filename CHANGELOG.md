@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+### Fixed
+- Typo when importing `chalk`
+
 ## [1.13.1] - 2021-05-25
 
 ### Fixed
