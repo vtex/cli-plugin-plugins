@@ -2,6 +2,9 @@
 
 ## [1.13.1] - 2021-05-25
 
+### Fixed
+- fix typo when importing `chalk`
+
 ## [1.13.0] - 2021-04-30
 
 ### Added
