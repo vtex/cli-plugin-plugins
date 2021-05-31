@@ -1,5 +1,15 @@
 ## [Unreleased]
 
+## [1.13.2] - 2021-05-31
+
+### Fixed
+- Typo when importing `chalk` on uninstall
+
+## [1.13.1] - 2021-05-25
+
+### Fixed
+- Typo when importing `chalk` on install
+
 ## [1.13.0] - 2021-04-30
 
 ### Added

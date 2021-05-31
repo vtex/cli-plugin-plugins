@@ -1,6 +1,6 @@
 import { Command, flags } from "@oclif/command";
 import { Plugin } from "@oclif/config";
-import * as chalk from "chalk";
+import chalk from "chalk";
 import cli from "cli-ux";
 
 import Plugins from "../../modules/plugins";
