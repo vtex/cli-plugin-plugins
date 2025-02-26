@@ -16,6 +16,6 @@ metadata:
 spec:
   lifecycle: stable
   owner: apps
-  type: cli
+  type: cli-plugin
   dependsOn:
     - component:toolbelt
