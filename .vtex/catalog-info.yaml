@@ -6,7 +6,6 @@ metadata:
   tags:
     - typescript
     - oclif
-    - plugin
   annotations:
     vtex.com/janus-acronym: ""
     vtex.com/o11y-os-index: ""
@@ -16,6 +15,6 @@ metadata:
 spec:
   lifecycle: stable
   owner: apps
-  type: cli
+  type: cli-plugin
   dependsOn:
     - component:toolbelt
