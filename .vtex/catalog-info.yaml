@@ -17,5 +17,5 @@ spec:
   lifecycle: stable
   owner: apps
   type: cli-plugin
-  dependsOn:
+  subcomponentOf:
     - component:toolbelt
