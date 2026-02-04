@@ -14,6 +14,7 @@ metadata:
     github.com/project-slug: vtex/cli-plugin-plugins
     backstage.io/techdocs-ref: dir:../
     vtex.com/application-id: SLS8WCMJ
+    vtex.com/platform-flow-id: CommDev#1,Merch#3
 spec:
   lifecycle: stable
   owner: te-0029
