@@ -1,5 +1,5 @@
 - name: cli-plugin-plugins
-  referenceId: PLACEHOLDER
+  referenceId: SLS8WCMJ
   build:
     provider: dkcicd
     pipelines:
