@@ -70,7 +70,7 @@
       }
     },
     "aliases": {
-      "aliasme": "oclif-debug"
+      "aliasme": "@vtex/cli-plugin-lighthouse"
     },
     "bin": "vtex"
   },

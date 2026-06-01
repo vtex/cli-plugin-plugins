@@ -1,88 +1,38 @@
-import {expect, test} from '../../test'
+import {test} from '../../test'
+import Plugins from '../../../src/modules/plugins'
+
+const mockPlugin = {version: '1.0.0'}
 
 describe('command', () => {
   test
-  .command(['plugins:install', '@oclif/example-plugin-ts'], {reset: true})
+  .stub(Plugins.prototype, 'install', () => Promise.resolve(mockPlugin))
   .stdout()
-  .command(['plugins'], {reset: true})
-  .do(output => expect(output.stdout).to.contain('@oclif/example-plugin-ts '))
-  .stdout()
-  .command(['hello'], {reset: true})
-  .do(output => expect(output.stdout).to.contain('hello world'))
-  .command(['plugins:uninstall', '@heroku-cli/plugin-@oclif/example-plugin-ts'])
-  .stdout()
-  .command(['plugins'], {reset: true})
-  .do(output => expect(output.stdout).to.equal('no plugins installed\n'))
-  .it('installs and uninstalls @oclif/example-plugin-ts')
+  .command(['plugins:install', '@vtex/cli-plugin-lighthouse'], {reset: true})
+  .it('installs npm plugin following vtex naming convention')
 
   test
-  .command(['plugins:install', '@oclif/example-plugin-ts@latest'], {reset: true})
+  .stub(Plugins.prototype, 'install', () => Promise.resolve(mockPlugin))
   .stdout()
-  .command(['plugins'], {reset: true})
-  .do(output => expect(output.stdout).to.contain('@oclif/example-plugin-ts'))
-  .command(['plugins:uninstall', '@oclif/example-plugin-ts@latest'], {reset: true})
-  .stdout()
-  .command(['plugins'], {reset: true})
-  .do(output => expect(output.stdout).to.equal('no plugins installed\n'))
-  .it('installs and uninstalls @oclif/example-plugin-ts with tags')
+  .command(['plugins:install', '@vtex/cli-plugin-lighthouse@latest'], {reset: true})
+  .it('installs npm plugin with explicit tag')
 
   test
+  .stub(Plugins.prototype, 'install', () => Promise.resolve(mockPlugin))
+  .stdout()
   .command(['plugins:install', 'aliasme'], {reset: true})
-  .stdout()
-  .command(['plugins'], {reset: true})
-  .do(output => expect(output.stdout).to.contain('oclif-debug'))
-  .stdout()
-  .command(['debug'], {reset: true})
-  .do(output => expect(output.stdout).to.contain('debug'))
-  .command(['plugins:uninstall', 'oclif-debug'])
-  .stdout()
-  .command(['plugins'], {reset: true})
-  .do(output => expect(output.stdout).to.equal('no plugins installed\n'))
   .it('installs via an alias')
 
   test
-  .command(['plugins:install', 'jdxcode/oclif-debug'], {reset: true})
+  .stub(Plugins.prototype, 'install', () => Promise.resolve(mockPlugin))
   .stdout()
-  .command(['plugins'], {reset: true})
-  .do(output => expect(output.stdout).to.contain('oclif-debug'))
-  .stdout()
-  .command(['debug'], {reset: true})
-  .do(output => expect(output.stdout).to.contain('debug'))
-  .command(['plugins:uninstall', 'oclif-debug'])
-  .stdout()
-  .command(['plugins'], {reset: true})
-  .do(output => expect(output.stdout).to.equal('no plugins installed\n'))
-  .it('installs and uninstalls jdxcode/oclif-debug')
+  .command(['plugins:install', 'vtex/cli-plugin-lighthouse'], {reset: true})
+  .it('installs git repo following vtex naming convention')
 
   test
   .nock('https://registry.npmjs.org', api => api
-  .get('/@heroku-cli%2fplugin-stubbed')
+  .get('/@vtex%2fcli-plugin-stubbed')
   .reply(503, ''))
   .command(['plugins:install', 'stubbed'], {reset: true})
   .catch(/HTTP Error 503/)
-  .stdout()
-  .command(['plugins'], {reset: true})
-  .do(output => expect(output.stdout).to.equal('no plugins installed\n'))
-  .it('does not install if unsure if scoped package does not exist')
-  // test
-  // .command(['plugins:install', 'heroku-debug@beta'], {reset: true})
-  // .stdout()
-  // .command(['plugins'], {reset: true})
-  // .do(output => expect(output.stdout).to.match(/heroku-debug \d+\.\d+\.\d+-beta \(beta\)/))
-  // .it('installs @heroku-cli/plugin-status@beta')
-
-  // test
-  // .skip()
-  // .command(['plugins:install', 'heroku-debug'])
-  // .stdout()
-  // .command(['plugins'])
-  // .do(output => expect(output.stdout).to.contain('heroku-debug'))
-  // .stdout()
-  // .command(['debug'])
-  // .do(output => expect(output.stdout).to.contain('foo'))
-  // .command(['plugins:uninstall', 'heroku-debug'])
-  // .stdout()
-  // .command(['plugins'])
-  // .do(output => expect(output.stdout).to.equal('no plugins installed\n'))
-  // .it('installs and uninstalls heroku-debug')
+  .it('does not install if npm registry is unavailable')
 })

@@ -1,25 +1,28 @@
-import { Command, flags } from "@oclif/command";
-import chalk = require("chalk");
-import cli from "cli-ux";
-import { ColorifyConstants, COLORS } from "vtex";
+import {Command, flags} from '@oclif/command'
+import chalk = require('chalk');
+import cli from 'cli-ux'
+import {ColorifyConstants, COLORS} from 'vtex'
 import {FeatureFlag} from 'vtex'
 
-import Plugins from "../../modules/plugins";
+import Plugins from '../../modules/plugins'
 
 export default class PluginsInstall extends Command {
-  static description = "Installs a plugin into the CLI.";
+  static description = 'Installs a plugin into the CLI.';
 
-  static usage = "plugins install PLUGIN";
+  static usage = 'plugins install PLUGIN';
 
   static examples = [
+    // eslint-disable-next-line new-cap
     `${ColorifyConstants.COMMAND_OR_VTEX_REF(
-      "vtex plugins install"
+      'vtex plugins install',
     )} lighthouse`,
+    // eslint-disable-next-line new-cap
     `${ColorifyConstants.COMMAND_OR_VTEX_REF(
-      "vtex plugins install"
-    )} ${chalk.hex(COLORS.BLUE)("https://github.com/vtex/cli-plugin-someplugin")}`,
+      'vtex plugins install',
+    )} ${chalk.hex(COLORS.BLUE)('https://github.com/vtex/cli-plugin-someplugin')}`,
+    // eslint-disable-next-line new-cap
     `${ColorifyConstants.COMMAND_OR_VTEX_REF(
-      "vtex plugins install"
+      'vtex plugins install',
     )} @vtex/cli-plugin-someplugin`,
   ];
 
@@ -30,12 +33,12 @@ export default class PluginsInstall extends Command {
   ]
 
   static flags = {
-    help: flags.help({ char: "h" }),
-    verbose: flags.boolean({ char: "v" }),
+    help: flags.help({char: 'h'}),
+    verbose: flags.boolean({char: 'v'}),
     force: flags.boolean({
-      char: "f",
+      char: 'f',
       description:
-        "Refetches all packages, even the ones that were previously installed.",
+        'Refetches all packages, even the ones that were previously installed.',
     }),
   }
 
@@ -47,17 +50,17 @@ export default class PluginsInstall extends Command {
   // sequentially so the `no-await-in-loop` rule is ugnored
   /* eslint-disable no-await-in-loop */
   async run() {
-    const { flags, argv } = this.parse(PluginsInstall);
-    if (flags.verbose) this.plugins.verbose = true;
-    const aliases = this.config.pjson.oclif.aliases || {};
+    const {flags, argv} = this.parse(PluginsInstall)
+    if (flags.verbose) this.plugins.verbose = true
+    const aliases = this.config.pjson.oclif.aliases || {}
     for (let name of argv) {
-      if (aliases[name] === null) this.error(`${name} is blocked`);
-      name = aliases[name] || name;
-      const p = await this.parsePlugin(name);
-      let plugin;
-      await this.config.runHook("plugins:preinstall", {
+      if (aliases[name] === null) this.error(`${name} is blocked`)
+      name = aliases[name] || name
+      const p = await this.parsePlugin(name)
+      let plugin
+      await this.config.runHook('plugins:preinstall', {
         plugin: p,
-      });
+      })
       try {
         const pluginsAllowList = FeatureFlag.getSingleton().getFeatureFlagInfo<{allowedNpmScopes: string[]; allowedGitOrgs: string[]}>('PLUGINS_ALLOW_LIST')
         if (p.type === 'npm') {
@@ -65,12 +68,12 @@ export default class PluginsInstall extends Command {
           this.ensurePluginFollowsStandardPattern(p.name)
 
           cli.action.start(
-            `Installing plugin ${chalk.cyan(this.plugins.friendlyName(p.name))}`
-          );
+            `Installing plugin ${chalk.cyan(this.plugins.friendlyName(p.name))}`,
+          )
           plugin = await this.plugins.install(p.name, {
             tag: p.tag,
             force: flags.force,
-          });
+          })
         } else {
           this.ensureGitOrgIsAllowed(p.url, pluginsAllowList.allowedGitOrgs)
           this.ensurePluginFollowsStandardPattern(p.url)
@@ -79,10 +82,10 @@ export default class PluginsInstall extends Command {
           plugin = await this.plugins.install(p.url, {force: flags.force})
         }
       } catch (error) {
-        cli.action.stop(chalk.bold.red("failed"));
-        throw error;
+        cli.action.stop(chalk.bold.red('failed'))
+        throw error
       }
-      cli.action.stop(`installed v${plugin.version}`);
+      cli.action.stop(`installed v${plugin.version}`)
     }
   }
   /* eslint-enable no-await-in-loop */
@@ -95,18 +98,18 @@ export default class PluginsInstall extends Command {
     if (input.startsWith('git+ssh://') || input.endsWith('.git')) {
       return {url: input, type: 'repo'}
     }
-    if (input.includes("@") && input.includes("/")) {
-      input = input.slice(1);
-      const [name, tag = "latest"] = input.split("@");
-      return { name: "@" + name, tag, type: "npm" };
+    if (input.includes('@') && input.includes('/')) {
+      input = input.slice(1)
+      const [name, tag = 'latest'] = input.split('@')
+      return {name: '@' + name, tag, type: 'npm'}
     }
-    if (input.includes("/")) {
-      if (input.includes(":")) return { url: input, type: "repo" };
-      return { url: `https://github.com/${input}`, type: "repo" };
+    if (input.includes('/')) {
+      if (input.includes(':')) return {url: input, type: 'repo'}
+      return {url: `https://github.com/${input}`, type: 'repo'}
     }
-    const [splitName, tag = "latest"] = input.split("@");
-    const name = await this.plugins.maybeUnfriendlyName(splitName);
-    return { name, tag, type: "npm" };
+    const [splitName, tag = 'latest'] = input.split('@')
+    const name = await this.plugins.maybeUnfriendlyName(splitName)
+    return {name, tag, type: 'npm'}
   }
 
   ensureNpmPackageScopeIsAllowed(name: string, allowedNpmScopes: string[]) {
